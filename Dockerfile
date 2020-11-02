@@ -1,6 +1,5 @@
-LABEL maintainer="Vassilis Karapatakis <vassilis.karapatakis@iteam.gr>"
-
 FROM maven:3.6.3-jdk-8-slim
+LABEL maintainer="Vassilis Karapatakis <vassilis.karapatakis@iteam.gr>"
 
 ###########
 # Node.js
