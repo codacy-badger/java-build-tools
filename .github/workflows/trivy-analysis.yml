@@ -5,10 +5,12 @@ on:
     branches: [ master ]
     paths-ignore:
       - '**/snyk-analysis.yml'
+      - '**/codacy-analysis.yml'
       - 'README.md'
   pull_request:
     paths-ignore:
       - '**/snyk-analysis.yml'
+      - '**/codacy-analysis.yml'
       - 'README.md'
 
 env:
