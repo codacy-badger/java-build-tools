@@ -2,15 +2,14 @@ name: Snyk Container
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
     paths-ignore:
-      - '**/workflows/*.yml'
+      - '**/trivy-analysis.yml'
+      - 'README.md'
   pull_request:
-    branches:
-      - master
     paths-ignore:
-      - '**/workflows/*.yml'
+      - '**/trivy-analysis.yml'
+      - 'README.md'
 
 env:
   DOCKER_REPOSITORY: vkarapatakis
