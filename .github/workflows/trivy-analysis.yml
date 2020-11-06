@@ -3,9 +3,11 @@ name: Code Scanning
 on:
   push:
     branches: [ master ]
-    paths-ignore: snyk-analysis.yml
+    paths-ignore:
+      - snyk-analysis.yml
   pull_request:
-    paths-ignore: snyk-analysis.yml
+    paths-ignore:
+      - snyk-analysis.yml
 
 env:
   DOCKER_REPOSITORY: vkarapatakis
