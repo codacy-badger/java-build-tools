@@ -1,0 +1,35 @@
+name: Snyk Container
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+
+env:
+  DOCKER_REPOSITORY: vkarapatakis
+  IMAGE_NAME: java-build-tools
+
+jobs:
+  snyk:
+    name: Snyk
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build a Docker image
+      run: docker build -t ${{ env.DOCKER_REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
+
+    - name: Run Snyk to check Docker image for vulnerabilities
+      uses: snyk/actions/docker@master
+      continue-on-error: true
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        image: ${{ env.DOCKER_REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+        args: --file=Dockerfile
+
+    - name: Upload result to GitHub Code Scanning
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: snyk.sarif
