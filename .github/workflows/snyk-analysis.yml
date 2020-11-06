@@ -3,9 +3,11 @@ name: Snyk Container
 on:
   push:
     branches: [ master ]
-    paths-ignore: trivy-analysis.yml
+    paths-ignore:
+      - trivy-analysis.yml
   pull_request:
-    paths-ignore: trivy-analysis.yml
+    paths-ignore:
+      - trivy-analysis.yml
 
 env:
   DOCKER_REPOSITORY: vkarapatakis
