@@ -2,12 +2,15 @@ name: Code Scanning
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
     paths-ignore:
-      - snyk-analysis.yml
+      - '**/workflows/*.yml'
   pull_request:
+    branches:
+      - master
     paths-ignore:
-      - snyk-analysis.yml
+      - '**/workflows/*.yml'
 
 env:
   DOCKER_REPOSITORY: vkarapatakis
